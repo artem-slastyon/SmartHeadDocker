@@ -16,4 +16,4 @@ fi
 
 echo "Updating /etc/hosts... (need privileged access)"
 sudo sed -i '/#Tenorium/d' /etc/hosts
-echo "127.0.0.1 api.tenorium.local tenorium.local sso.tenorium.local #Tenorium" | sudo tee -a /etc/hosts >> /dev/null
+echo "127.0.0.1 api.tenorium.local tenorium.local #Tenorium" | sudo tee -a /etc/hosts >> /dev/null
