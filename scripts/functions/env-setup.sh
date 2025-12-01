@@ -2,8 +2,17 @@
 
 echo "Updating/Inserting alias..."
 
-sed -i '/#Tenorium/d' ~/.bashrc
-echo "alias tenorium='~/workspace/tenorium/scripts/tenorium.sh' #Tenorium" >> ~/.bashrc
+current_shell=$(basename "$0")
+
+if [ -f "$HOME/.bashrc" ]; then
+    sed -i '/#Tenorium/d' ~/.bashrc
+    echo "alias tenorium='~/workspace/tenorium/scripts/tenorium.sh' #Tenorium" >> ~/.bashrc
+fi
+    
+if [ -f "$HOME/.zshrc" ]; then
+    sed -i '/#Tenorium/d' ~/.bashrc
+    echo "alias tenorium='~/workspace/tenorium/scripts/tenorium.sh' #Tenorium" >> ~/.zshrc
+fi
 
 echo "Updating /etc/hosts... (need privileged access)"
 sudo sed -i '/#Tenorium/d' /etc/hosts
