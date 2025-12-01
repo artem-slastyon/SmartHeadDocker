@@ -9,6 +9,8 @@ Tenorium
 \e[1;32mdown\e[0m - stop containers
 \e[1;32mrestart\e[0m - restart containers
 \e[1;32menv\e[0m - setup/update environment\n
+\e[1;32mclone\e[0m - clone repositories
+\e[1;32mgit\e[0m - run git command for each repository
 EOF
 )
 
@@ -25,6 +27,8 @@ BUILD_SCRIPT_PATH="$FUNCTIONS_DIR/build.sh"
 BUILD_DOCKER_SCRIPT_PATH="$FUNCTIONS_DIR/build-docker.sh"
 POWER_ACTION_SCRIPT_PATH="$FUNCTIONS_DIR/power-action.sh"
 ENV_SCRIPT_PATH="$FUNCTIONS_DIR/env-setup.sh"
+CLONE_SCRIPT_PATH="$FUNCTIONS_DIR/clone.sh"
+GIT_SCRIPT_PATH="$FUNCTIONS_DIR/git.sh"
 
 case "$command" in
 "build")
@@ -40,6 +44,10 @@ $POWER_ACTION_SCRIPT_PATH "down";;
 $POWER_ACTION_SCRIPT_PATH "restart";;
 "env")
 $ENV_SCRIPT_PATH;;
+"clone")
+$CLONE_SCRIPT_PATH;;
+"git")
+$GIT_SCRIPT_PATH "$args";;
 *)
   echo -e "$help";
 ;;

@@ -1,5 +1,5 @@
-/www/*
-.idea
+www/*
+!www/.gitkeep
 data/mysql/*
 logs/apache2/*
 logs/nodejs/*
