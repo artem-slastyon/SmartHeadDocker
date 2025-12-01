@@ -1,20 +1,7 @@
 version: "3"
 
 services:
-  db:
-    image: "mysql:8.0.29"
-    container_name: "tenorium-db"
-    volumes:
-      - ./data/mysql:/var/lib/mysql
-    restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: rootpassword
-      MYSQL_DATABASE: tenorium
-      MYSQL_USER: tenorium
-      MYSQL_PASSWORD: tenoriumpass
-    ports:
-      - "3306:3306"
-  webserver:
+  apache:
     container_name: "tenorium-webserver"
     restart: always
     build:
@@ -25,15 +12,8 @@ services:
       - ./config/apache:/etc/apache2:delegated
       - ./www:/var/www:delegated
       - ./logs/apache2:/var/log/apache2:delegated
-    links:
-      - db
-    depends_on:
-      - db
-  phpmyadmin:
-    container_name: "tenorium-phpmyadmin"
-    image: phpmyadmin/phpmyadmin
-    restart: always
-    ports:
-      - "8080:80"
-    depends_on:
-      - db
+  nodejs:
+    image: "node:17.7.1"
+    volumes:
+      - "./www/frontend/:/var/www/frontend/:delegated"
+      - "./logs/nodejs:/root/.npm/_logs"

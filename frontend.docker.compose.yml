@@ -1,8 +1,0 @@
-version: "3"
-
-services:
-  nodejs:
-    image: "node:17.7.1"
-    volumes:
-      - "./www/site-front/:/var/www/site-front/:delegated"
-      - "./logs/nodejs:/root/.npm/_logs"
