@@ -7,7 +7,7 @@ if [ -z "$1" ]; then
     exit 1
 fi
 
-PROJECT_ROOT="$HOME/workspace/tenorium/www"
+PROJECT_ROOT="$HOME/workspace/trade/www"
 old_pwd=$(pwd);
 
 GIT_COMMAND=$@

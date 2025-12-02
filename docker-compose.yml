@@ -2,17 +2,17 @@ version: "3"
 
 services:
   apache:
-    container_name: "tenorium-apache"
+    container_name: "trade-apache"
     restart: always
     build:
-      context: docker-files/tenorium-apache
+      context: docker-files/trade-apache
     ports:
       - "80:80"
     volumes:
       - ./www:/usr/local/apache2/htdocs:delegated
       - ./logs/apache2:/usr/local/apache2/logs:delegated
   nodejs:
-    container_name: "tenorium-nodejs"
+    container_name: "trade-nodejs"
     image: "node:20"
     volumes:
       - "./www/frontend/:/var/www/frontend/:delegated"

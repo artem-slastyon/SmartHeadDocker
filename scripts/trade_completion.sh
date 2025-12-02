@@ -1,14 +1,14 @@
-tenorium_is_zsh() {
+trade_is_zsh() {
   [ -n "${ZSH_VERSION-}" ]
 }
 
-if tenorium_is_zsh; then
+if trade_is_zsh; then
   setopt completealiases
 fi
 
-alias tenorium='$HOME/workspace/tenorium/scripts/tenorium.sh'
+alias trade='$HOME/workspace/trade/scripts/trade.sh'
 
-_tenorium_generate_completion() {
+_trade_generate_completion() {
   declare current_word
   current_word="${COMP_WORDS[COMP_CWORD]}"
   # shellcheck disable=SC2207
@@ -16,27 +16,27 @@ _tenorium_generate_completion() {
   return 0
 }
 
-_tenorium_commands() {
+_trade_commands() {
   declare current_word
   declare command
 
   current_word="${COMP_WORDS[COMP_CWORD]}"
 
   COMMANDS='
-      build build-docker up down restart env clone git'
+      build build-docker up down restart setup clone git'
 
   if [ ${#COMP_WORDS[@]} == 2 ]; then
-    _tenorium_generate_completion "${COMMANDS}"
+    _trade_generate_completion "${COMMANDS}"
   fi
 }
 
-_tenorium() {
+_trade() {
   declare previous_word
   previous_word="${COMP_WORDS[COMP_CWORD - 1]}"
 
   case "${previous_word}" in
   *)
-    _tenorium_commands
+    _trade_commands
   ;;
   esac
 }
@@ -57,4 +57,4 @@ if [[ -n ${ZSH_VERSION-} ]]; then
   autoload -U +X bashcompinit && bashcompinit
 fi
 
-complete -o default -F _tenorium tenorium
+complete -o default -F _trade trade

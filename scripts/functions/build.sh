@@ -2,7 +2,7 @@
 
 echo "Building frontend..."
 
-docker-compose -p tenorium -f ~/workspace/tenorium/docker-compose.yml run nodejs bash -c "$(cat << EOF
+docker-compose -p trade -f ~/workspace/trade/docker-compose.yml run nodejs bash -c "$(cat << EOF
 cd /var/www/frontend &&
 npm install
 npm run dev

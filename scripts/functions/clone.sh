@@ -1,10 +1,10 @@
 #!/bin/bash
 
 function clone_frontend() {
-	target_dir=~/workspace/tenorium/www/frontend
+	target_dir=~/workspace/trade/www/frontend
   if [[ ! -f $target_dir ]]; then
     echo "Clonning frontend";
-    git clone https://gitlab.com/tenorium/site/frontend.git $target_dir
+    git clone https://gitlab.com/trade/site/frontend.git $target_dir
   fi
 }
 
