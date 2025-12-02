@@ -2,18 +2,18 @@ version: "3"
 
 services:
   apache:
-    container_name: "tenorium-webserver"
+    container_name: "tenorium-apache"
     restart: always
     build:
-      context: docker-files/tenorium-apache-php
+      context: docker-files/tenorium-apache
     ports:
       - "80:80"
     volumes:
-      - ./config/apache:/etc/apache2:delegated
-      - ./www:/var/www:delegated
-      - ./logs/apache2:/var/log/apache2:delegated
+      - ./www:/usr/local/apache2/htdocs:delegated
+      - ./logs/apache2:/usr/local/apache2/logs:delegated
   nodejs:
-    image: "node:17.7.1"
+    container_name: "tenorium-nodejs"
+    image: "node:20"
     volumes:
       - "./www/frontend/:/var/www/frontend/:delegated"
-      - "./logs/nodejs:/root/.npm/_logs"
+      - "./logs/nodejs:/root/.npm/_logs:delegated"
