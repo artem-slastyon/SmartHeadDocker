@@ -9,11 +9,37 @@ services:
     ports:
       - "80:80"
     volumes:
-      - ./www:/usr/local/apache2/htdocs:delegated
-      - ./logs/apache2:/usr/local/apache2/logs:delegated
+      - ./www:/var/www
+      - ./logs/apache2:/var/log/apache2:delegated
+    depends_on:
+      - php8.4
+    develop:
+      watch:
+        - action: rebuild
+          path: docker-files/trade-apache/config/panel.conf
+        - action: rebuild
+          path: docker-files/trade-apache/config/panel-ssl.conf
+
+        - action: rebuild
+          path: docker-files/trade-apache/Dockerfile
+  php8.4:
+    container_name: "trade-php"
+    restart: always
+    build:
+      context: docker-files/trade-php8.4
+    volumes:
+      - "./logs/supervisor/:/var/log/supervisor/:delegated"
+      - "./www:/var/www"
+    develop:
+      watch:
+        - action: rebuild
+          path: docker-files/trade-php8.4/config/supervisord.conf
+
+        - action: rebuild
+          path: docker-files/trade-php8.4/Dockerfile
   nodejs:
     container_name: "trade-nodejs"
     image: "node:20"
     volumes:
-      - "./www/frontend/:/var/www/frontend/:delegated"
+      - "./www/panel/:/var/www/panel/:delegated"
       - "./logs/nodejs:/root/.npm/_logs:delegated"
