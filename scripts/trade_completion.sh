@@ -23,11 +23,23 @@ _trade_commands() {
   current_word="${COMP_WORDS[COMP_CWORD]}"
 
   COMMANDS='
-      build build-docker up down restart setup clone git'
+      build clone docker down git restart setup up'
+
+  DOCKER_SUBCOMMANDS='
+      build exec temp watch'
 
   if [ ${#COMP_WORDS[@]} == 2 ]; then
     _trade_generate_completion "${COMMANDS}"
   fi
+
+  case "${#COMP_WORDS[@]}" in
+  2) _trade_generate_completion "${COMMANDS}";;
+  3)
+    command="${COMP_WORDS[COMP_CWORD - 1]}"
+    if [ "$command" == "docker" ]; then
+      _trade_generate_completion "${DOCKER_SUBCOMMANDS}"
+    fi;;
+  esac
 }
 
 _trade() {
