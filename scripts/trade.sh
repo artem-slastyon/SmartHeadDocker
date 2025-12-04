@@ -60,6 +60,7 @@ docker_handle() {
   DOCKER_BUILD_SCRIPT_PATH="$DOCKER_FUNCTIONS/build.sh"
   EXEC_SCRIPT_PATH="$DOCKER_FUNCTIONS/exec.sh"
   TEMP_SCRIPT_PATH="$DOCKER_FUNCTIONS/temp.sh"
+  WATCH_SCRIPT_PATH="$DOCKER_FUNCTIONS/watch.sh"
 
   case "$command" in
   "build")
@@ -69,7 +70,7 @@ docker_handle() {
   "temp")
   $TEMP_SCRIPT_PATH "${args[@]}";;
   "watch")
-  $TEMP_SCRIPT_PATH "${args[@]}";;
+  $WATCH_SCRIPT_PATH "${args[@]}";;
   *)
   docker_help
   exit
