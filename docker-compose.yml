@@ -22,6 +22,14 @@ services:
 
         - action: rebuild
           path: docker-files/trade-apache/Dockerfile
+  db:
+    image: mariadb:12.1.2
+    container_name: "trade-db"
+    restart: always
+    environment:
+      MARIADB_ROOT_PASSWORD: password
+    volumes:
+      - "./data/mysql:/var/lib/mysql"
   php8.4:
     container_name: "trade-php"
     restart: always
