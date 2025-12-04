@@ -28,6 +28,8 @@ _trade_commands() {
   DOCKER_SUBCOMMANDS='
       build exec temp watch'
 
+  SERVICES='apache php8.4'
+
   if [ ${#COMP_WORDS[@]} == 2 ]; then
     _trade_generate_completion "${COMMANDS}"
   fi
@@ -39,6 +41,11 @@ _trade_commands() {
     if [ "$command" == "docker" ]; then
       _trade_generate_completion "${DOCKER_SUBCOMMANDS}"
     fi;;
+  4)
+    command="${COMP_WORDS[COMP_CWORD - 1]}"
+    case "$command" in
+    "exec") _trade_generate_completion "${SERVICES}";;
+    esac
   esac
 }
 
