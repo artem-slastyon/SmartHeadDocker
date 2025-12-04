@@ -70,6 +70,10 @@ docker_handle() {
   $TEMP_SCRIPT_PATH "${args[@]}";;
   "watch")
   $TEMP_SCRIPT_PATH "${args[@]}";;
+  *)
+  docker_help
+  exit
+  ;;
   esac
 }
 
@@ -83,6 +87,7 @@ args=("${@:2}")
 FUNCTIONS_DIR="$( dirname -- "$0";)/functions"
 
 BUILD_SCRIPT_PATH="$FUNCTIONS_DIR/build.sh"
+COMPOSER_SCRIPT_PATH="$FUNCTIONS_DIR/php/composer.sh"
 POWER_ACTION_SCRIPT_PATH="$FUNCTIONS_DIR/power-action.sh"
 SETUP_SCRIPT_PATH="$FUNCTIONS_DIR/setup.sh"
 CLONE_SCRIPT_PATH="$FUNCTIONS_DIR/clone.sh"
@@ -91,6 +96,8 @@ GIT_SCRIPT_PATH="$FUNCTIONS_DIR/git.sh"
 case "$command" in
 "build")
 $BUILD_SCRIPT_PATH "${args[@]}";;
+"composer")
+$COMPOSER_SCRIPT_PATH "${args[@]}";;
 "docker")
 docker_handle "${args[@]}";;
 "up")
@@ -106,7 +113,8 @@ $CLONE_SCRIPT_PATH;;
 "git")
 $GIT_SCRIPT_PATH "${args[@]}";;
 *)
-  echo -e "$help";
+  general_help
+  exit 0
 ;;
 
 esac
