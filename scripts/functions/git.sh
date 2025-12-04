@@ -10,13 +10,13 @@ fi
 PROJECT_ROOT="$HOME/workspace/trade/www"
 old_pwd=$(pwd);
 
-GIT_COMMAND=$@
+GIT_COMMAND=("$@")
 
 for repo_folder in "$PROJECT_ROOT"/*; do
   if [ -d "$repo_folder/.git" ]; then
     echo "Entering repository: $(basename $repo_folder)"
 
-    (cd "$repo_folder" && echo "Executing: git $GIT_COMMAND" && git $GIT_COMMAND)
+    (cd "$repo_folder" && echo "Executing: git " "${GIT_COMMAND[@]}" && git "${GIT_COMMAND[@]}")
   fi
 done
 

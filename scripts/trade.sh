@@ -53,7 +53,7 @@ docker_handle() {
   fi
 
   command=$1
-  args=${*:2}
+  args=("${@:2}")
 
   DOCKER_FUNCTIONS="$FUNCTIONS_DIR/docker"
 
@@ -63,13 +63,13 @@ docker_handle() {
 
   case "$command" in
   "build")
-  $DOCKER_BUILD_SCRIPT_PATH "$args";;
+  $DOCKER_BUILD_SCRIPT_PATH "${args[@]}";;
   "exec")
-  $EXEC_SCRIPT_PATH "$args";;
+  $EXEC_SCRIPT_PATH "${args[@]}";;
   "temp")
-  $TEMP_SCRIPT_PATH "$args";;
+  $TEMP_SCRIPT_PATH "${args[@]}";;
   "watch")
-  $TEMP_SCRIPT_PATH "$args";;
+  $TEMP_SCRIPT_PATH "${args[@]}";;
   esac
 }
 
@@ -79,7 +79,7 @@ if [[ $# -eq 0 ]]; then
 fi
 
 command=$1
-args=${*:2}
+args=("${@:2}")
 FUNCTIONS_DIR="$( dirname -- "$0";)/functions"
 
 BUILD_SCRIPT_PATH="$FUNCTIONS_DIR/build.sh"
@@ -90,22 +90,21 @@ GIT_SCRIPT_PATH="$FUNCTIONS_DIR/git.sh"
 
 case "$command" in
 "build")
-$BUILD_SCRIPT_PATH "$args"
-;;
+$BUILD_SCRIPT_PATH "${args[@]}";;
 "docker")
-docker_handle "$args";;
+docker_handle "${args[@]}";;
 "up")
-$POWER_ACTION_SCRIPT_PATH "up";;
+$POWER_ACTION_SCRIPT_PATH "up" "${args[@]}";;
 "down")
-$POWER_ACTION_SCRIPT_PATH "down";;
+$POWER_ACTION_SCRIPT_PATH "down" "${args[@]}";;
 "restart")
-$POWER_ACTION_SCRIPT_PATH "restart";;
+$POWER_ACTION_SCRIPT_PATH "restart" "${args[@]}";;
 "setup")
 $SETUP_SCRIPT_PATH;;
 "clone")
 $CLONE_SCRIPT_PATH;;
 "git")
-$GIT_SCRIPT_PATH "$args";;
+$GIT_SCRIPT_PATH "${args[@]}";;
 *)
   echo -e "$help";
 ;;
