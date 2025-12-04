@@ -25,4 +25,6 @@ RUN sed -i 's/listen\ =\ \/run\/php\/php8.4-fpm.sock/listen\ =\ 9000/' /etc/php/
 
 EXPOSE 9000/tcp
 
+WORKDIR /var/www/panel
+
 CMD ["/usr/bin/supervisord"]
