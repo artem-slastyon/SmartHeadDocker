@@ -23,7 +23,7 @@ _trade_commands() {
   current_word="${COMP_WORDS[COMP_CWORD]}"
 
   COMMANDS='
-      build clone docker down git restart setup up'
+      build clone composer docker down git restart setup up'
 
   DOCKER_SUBCOMMANDS='
       build exec temp watch'
