@@ -6,17 +6,23 @@ general_help() {
 
   Usage: trade <command> [options]
 
-  Commands:
-  \e[1;32mbuild\e[0m - build project
-  \e[1;32mdocker\e[0m - docker commands
-  \e[1;32msetup\e[0m - setup/update environment\n
+  \e[0;36mGeneral\e[0m commands:
+  \e[1;32mdocker\e[0m - Docker commands
+  \e[1;32msetup\e[0m - Setup/Update environment\n
 
-  Git commands:
+  \e[0;36mVite\e[0m commands:
+  \e[1;32mbuild\e[0m - Build project
+  \e[1;32mwatch\e[0m - Watch project
+
+  \e[0;36mPHP\e[0m commands:
+  \e[1;32mcomposer\e[0m - Execute composer command
+
+  \e[0;36mGit\e[0m commands:
   \e[1;32mclone\e[0m - Clone repositories that not exists
   \e[1;32mgit\e[0m - Run git command for each repository
 
 
-  Container power actions:
+  \e[0;36mPower\e[0m commands:
   \e[1;32mup\e[0m - Start containers
   \e[1;32mdown\e[0m - Stop containers
   \e[1;32mrestart\e[0m - Restart containers
