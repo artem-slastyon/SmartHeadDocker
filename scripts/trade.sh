@@ -15,6 +15,7 @@ general_help() {
   \e[1;32mwatch\e[0m - Watch project
 
   \e[0;36mPHP\e[0m commands:
+  \e[1;32martisan\e[0m - Execute artisan command
   \e[1;32mcomposer\e[0m - Execute composer command
 
   \e[0;36mGit\e[0m commands:
@@ -93,6 +94,7 @@ command=$1
 args=("${@:2}")
 FUNCTIONS_DIR="$( dirname -- "$0";)/functions"
 
+ARTISAN_SCRIPT_PATH="$FUNCTIONS_DIR/php/artisan.sh"
 BUILD_SCRIPT_PATH="$FUNCTIONS_DIR/build.sh"
 COMPOSER_SCRIPT_PATH="$FUNCTIONS_DIR/php/composer.sh"
 POWER_ACTION_SCRIPT_PATH="$FUNCTIONS_DIR/power-action.sh"
@@ -102,6 +104,8 @@ GIT_SCRIPT_PATH="$FUNCTIONS_DIR/git.sh"
 WATCH_SCRIPT_PATH="$FUNCTIONS_DIR/watch.sh"
 
 case "$command" in
+"artisan")
+$ARTISAN_SCRIPT_PATH "${args[@]}";;
 "build")
 $BUILD_SCRIPT_PATH "${args[@]}";;
 "composer")
