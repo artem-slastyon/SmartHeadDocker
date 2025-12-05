@@ -20,7 +20,6 @@ FUNCTIONS_PATH="$( dirname -- "$0";)"
 MAIN_SCRIPT_PATH="$( dirname -- "$FUNCTIONS_PATH";)/trade.sh"
 
 $MAIN_SCRIPT_PATH clone
-$MAIN_SCRIPT_PATH up
 $MAIN_SCRIPT_PATH composer install -o
 $MAIN_SCRIPT_PATH artisan migrate --seed
 $MAIN_SCRIPT_PATH build
