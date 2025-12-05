@@ -51,6 +51,15 @@ USER user
 
 RUN composer global require laravel/installer
 
+RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
+
+ENV NVM_DIR /home/user/.nvm
+
+RUN . ~/.nvm/nvm.sh && \
+    nvm install 20 && \
+    nvm use 20 && \
+    nvm alias default 20
+
 EXPOSE 9000/tcp
 
 WORKDIR /var/www/panel

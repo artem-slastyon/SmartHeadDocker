@@ -54,9 +54,3 @@ services:
       DB_DATABASE: trade
       DB_USERNAME: root
       DB_PASSWORD: password
-  nodejs:
-    container_name: "trade-nodejs"
-    image: "node:20"
-    volumes:
-      - "./www/panel/:/var/www/panel/:delegated"
-      - "./logs/nodejs:/root/.npm/_logs:delegated"
