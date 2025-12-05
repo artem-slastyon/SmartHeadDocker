@@ -1,5 +1,3 @@
-version: "3"
-
 services:
   apache:
     container_name: "trade-apache"
