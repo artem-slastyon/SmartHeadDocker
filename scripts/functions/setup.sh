@@ -15,3 +15,12 @@ fi
 echo "Updating /etc/hosts... (need privileged access)"
 sudo sed -i '/#Trade/d' /etc/hosts
 echo "127.0.0.1 trade.tenorium.local #Trade" | sudo tee -a /etc/hosts >> /dev/null
+
+FUNCTIONS_PATH="$( dirname -- "$0";)"
+MAIN_SCRIPT_PATH="$( dirname -- "$FUNCTIONS_PATH";)/trade.sh"
+
+$MAIN_SCRIPT_PATH clone
+$MAIN_SCRIPT_PATH up
+$MAIN_SCRIPT_PATH composer install -o
+$MAIN_SCRIPT_PATH artisan migrate --seed
+$MAIN_SCRIPT_PATH build
