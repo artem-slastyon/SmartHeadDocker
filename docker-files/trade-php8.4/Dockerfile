@@ -21,7 +21,11 @@ COPY config/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 RUN LC_ALL=C.UTF-8 add-apt-repository -y ppa:ondrej/php
 
 RUN apt-get install -y php8.4-fpm \
-    php8.4-zip
+    php8.4-zip \
+    php8.4-mbstring \
+    php8.4-curl \
+    php8.4-xml \
+    php8.4-mysql
 
 RUN mkdir -p /run/php
 
