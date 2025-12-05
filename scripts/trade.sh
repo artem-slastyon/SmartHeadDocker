@@ -93,6 +93,7 @@ POWER_ACTION_SCRIPT_PATH="$FUNCTIONS_DIR/power-action.sh"
 SETUP_SCRIPT_PATH="$FUNCTIONS_DIR/setup.sh"
 CLONE_SCRIPT_PATH="$FUNCTIONS_DIR/clone.sh"
 GIT_SCRIPT_PATH="$FUNCTIONS_DIR/git.sh"
+WATCH_SCRIPT_PATH="$FUNCTIONS_DIR/watch.sh"
 
 case "$command" in
 "build")
@@ -113,6 +114,8 @@ $SETUP_SCRIPT_PATH;;
 $CLONE_SCRIPT_PATH;;
 "git")
 $GIT_SCRIPT_PATH "${args[@]}";;
+"watch")
+$WATCH_SCRIPT_PATH "${args[@]}";;
 *)
   general_help
   exit 0
