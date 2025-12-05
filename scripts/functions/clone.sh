@@ -1,11 +1,13 @@
 #!/bin/bash
 
-function clone_frontend() {
+function clone_panel() {
 	target_dir=~/workspace/trade/www/panel
-  if [[ ! -f $target_dir ]]; then
-    echo "Clonning frontend";
+  if [ ! -d $target_dir ]; then
+    echo "Clonning panel";
     git clone https://gitlab.com/tenorium/trade/panel.git $target_dir
+  else
+    echo "Panel already exist"
   fi
 }
 
-clone_frontend
+clone_panel
