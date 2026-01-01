@@ -1,14 +1,14 @@
-trade_is_zsh() {
+{{projectCommand}}_is_zsh() {
   [ -n "${ZSH_VERSION-}" ]
 }
 
-if trade_is_zsh; then
+if {{projectCommand}}_is_zsh; then
   setopt completealiases
 fi
 
-alias trade='$HOME/workspace/trade/scripts/trade.sh'
+alias {{projectCommand}}='$HOME/workspace/{{projectCommand}}/scripts/main.sh'
 
-_trade_generate_completion() {
+_{{projectCommand}}_generate_completion() {
   declare current_word
   current_word="${COMP_WORDS[COMP_CWORD]}"
   # shellcheck disable=SC2207
@@ -16,7 +16,7 @@ _trade_generate_completion() {
   return 0
 }
 
-_trade_commands() {
+_{{projectCommand}}_commands() {
   declare current_word
   declare command
 
@@ -31,31 +31,31 @@ _trade_commands() {
   SERVICES='apache php8.4'
 
   if [ ${#COMP_WORDS[@]} == 2 ]; then
-    _trade_generate_completion "${COMMANDS}"
+    _{{projectCommand}}_generate_completion "${COMMANDS}"
   fi
 
   case "${#COMP_WORDS[@]}" in
-  2) _trade_generate_completion "${COMMANDS}";;
+  2) _{{projectCommand}}_generate_completion "${COMMANDS}";;
   3)
     command="${COMP_WORDS[COMP_CWORD - 1]}"
     if [ "$command" == "docker" ]; then
-      _trade_generate_completion "${DOCKER_SUBCOMMANDS}"
+      _{{projectCommand}}_generate_completion "${DOCKER_SUBCOMMANDS}"
     fi;;
   4)
     command="${COMP_WORDS[COMP_CWORD - 1]}"
     case "$command" in
-    "exec") _trade_generate_completion "${SERVICES}";;
+    "exec") _{{projectCommand}}_generate_completion "${SERVICES}";;
     esac
   esac
 }
 
-_trade() {
+_{{projectCommand}}() {
   declare previous_word
   previous_word="${COMP_WORDS[COMP_CWORD - 1]}"
 
   case "${previous_word}" in
   *)
-    _trade_commands
+    _{{projectCommand}}_commands
   ;;
   esac
 }
@@ -76,4 +76,4 @@ if [[ -n ${ZSH_VERSION-} ]]; then
   autoload -U +X bashcompinit && bashcompinit
 fi
 
-complete -o default -F _trade trade
+complete -o default -F _{{projectCommand}} {{projectCommand}}

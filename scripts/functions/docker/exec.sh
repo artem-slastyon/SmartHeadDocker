@@ -5,4 +5,4 @@ args=("${@:2}")
 
 echo "Executing command... in $service"
 
-docker-compose -p trade -f ~/workspace/trade/docker-compose.yml exec -u user -it "$service" bash "${args[@]}"
+docker-compose -p {{projectCommand}} -f ~/workspace/{{projectCommand}}/docker-compose.yml exec -u user -it "$service" bash "${args[@]}"

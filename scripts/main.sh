@@ -2,9 +2,9 @@
 
 general_help() {
   help=$(cat << 'EOF'
-  Tenorium Trade
+  {{projectName}}
 
-  Usage: trade <command> [options]
+  Usage: {{projectCommand}} <command> [options]
 
   \e[0;36mGeneral\e[0m commands:
   \e[1;32mdocker\e[0m - Docker commands
@@ -35,9 +35,9 @@ EOF
 
 docker_help() {
   help=$(cat << 'EOF'
-  Tenorium Trade
+  {{projectName}} Docker Commands
 
-  Usage: trade docker <command>
+  Usage: {{projectCommand}} docker <command>
 
   Commands:
   \e[1;32mbuild\e[0m - Build docker containers
