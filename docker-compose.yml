@@ -41,6 +41,10 @@ services:
       watch:
         - action: rebuild
           path: docker-files/php8.4/config/supervisord.conf
+        - action: rebuild
+          path: docker-files/php8.4/config/fpm-pool.conf
+        - action: rebuild
+          path: docker-files/php8.4/config/fpm.conf
 
         - action: rebuild
           path: docker-files/php8.4/Dockerfile

@@ -32,13 +32,12 @@ RUN apt-get install -y php8.4-fpm \
     php8.4-xml \
     php8.4-mysql
 
+COPY config/fpm.conf /etc/php/8.4/fpm/php-fpm.conf
+COPY config/fpm-pool.conf /etc/php/8.4/fpm/pool.d/www.conf
+
 RUN mkdir -p /run/php
 
 RUN mkdir -p /var/www
-
-RUN sed -i 's/listen\ =\ \/run\/php\/php8.4-fpm.sock/listen\ =\ 9000/' /etc/php/8.4/fpm/pool.d/www.conf
-RUN sed -i 's/user\ =\ www-data/user\ =\ user/' /etc/php/8.4/fpm/pool.d/www.conf
-RUN sed -i 's/group\ =\ www-data/group\ =\ user/' /etc/php/8.4/fpm/pool.d/www.conf
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
