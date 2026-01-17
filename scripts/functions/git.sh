@@ -22,4 +22,4 @@ done
 
 echo "Restoring pwd..."
 
-cd $old_pwd
+cd "$old_pwd" || exit

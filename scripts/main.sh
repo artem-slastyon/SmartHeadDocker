@@ -9,6 +9,7 @@ general_help() {
   \e[0;36mGeneral\e[0m commands:
   \e[1;32mdocker\e[0m - Docker commands
   \e[1;32msetup\e[0m - Setup/Update environment\n
+  \e[1;32mmkcert\e[0m - Run mkcert command
 
   \e[0;36mVite\e[0m commands:
   \e[1;32mbuild\e[0m - Build project
@@ -102,6 +103,7 @@ SETUP_SCRIPT_PATH="$FUNCTIONS_DIR/setup.sh"
 CLONE_SCRIPT_PATH="$FUNCTIONS_DIR/clone.sh"
 GIT_SCRIPT_PATH="$FUNCTIONS_DIR/git.sh"
 WATCH_SCRIPT_PATH="$FUNCTIONS_DIR/watch.sh"
+MKCERT_SCRIPT_PATH="$FUNCTIONS_DIR/mkcert.sh"
 
 case "$command" in
 "artisan")
@@ -112,6 +114,8 @@ $BUILD_SCRIPT_PATH "${args[@]}";;
 $COMPOSER_SCRIPT_PATH "${args[@]}";;
 "docker")
 docker_handle "${args[@]}";;
+"mkcert")
+$MKCERT_SCRIPT_PATH "${args[@]}";;
 "up")
 $POWER_ACTION_SCRIPT_PATH "up" "${args[@]}";;
 "down")

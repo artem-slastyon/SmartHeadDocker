@@ -23,7 +23,7 @@ _{{projectCommand}}_commands() {
   current_word="${COMP_WORDS[COMP_CWORD]}"
 
   COMMANDS='
-      artisan build clone composer docker down git restart setup up watch'
+      artisan build clone composer docker down git mkcert restart setup up watch'
 
   DOCKER_SUBCOMMANDS='
       build exec temp watch'

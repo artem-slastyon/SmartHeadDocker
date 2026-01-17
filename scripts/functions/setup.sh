@@ -20,6 +20,7 @@ FUNCTIONS_PATH="$( dirname -- "$0";)"
 MAIN_SCRIPT_PATH="$( dirname -- "$FUNCTIONS_PATH";)/main.sh"
 
 $MAIN_SCRIPT_PATH clone
+$MAIN_SCRIPT_PATH mkcert {{projectCommand}}.tenorium.local
 $MAIN_SCRIPT_PATH composer install -o
 $MAIN_SCRIPT_PATH artisan migrate --seed
 $MAIN_SCRIPT_PATH build

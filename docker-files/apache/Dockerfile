@@ -10,6 +10,8 @@ RUN groupadd -g 1000 user
 RUN useradd -m -u 1000 -g 1000 -s /bin/bash user
 RUN echo "user ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 
+RUN mkdir /etc/apache2/ssl
+
 RUN a2enmod proxy proxy_fcgi rewrite
 
 COPY config/panel.conf /etc/apache2/sites-available/
