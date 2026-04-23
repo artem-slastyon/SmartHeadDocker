@@ -12,7 +12,7 @@ RUN echo "user ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 
 RUN mkdir /etc/apache2/ssl
 
-RUN a2enmod proxy proxy_fcgi rewrite
+RUN a2enmod proxy proxy_fcgi rewrite ssl
 
 COPY config/panel.conf /etc/apache2/sites-available/
 COPY config/panel-ssl.conf /etc/apache2/sites-available/
@@ -21,7 +21,7 @@ RUN sed -i 's/export\ APACHE_RUN_USER=www-data/export\ APACHE_RUN_USER=user/' /e
 RUN sed -i 's/export\ APACHE_RUN_GROUP=www-data/export\ APACHE_RUN_GROUP=user/' /etc/apache2/envvars
 
 RUN a2dissite 000-default
-RUN a2ensite panel
+RUN a2ensite panel panel-ssl
 
 EXPOSE 80/tcp 443/tcp
 
