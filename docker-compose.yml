@@ -6,6 +6,7 @@ services:
       context: docker-files/apache
     ports:
       - "80:80"
+      - "443:443"
     volumes:
       - ./certs:/etc/apache2/ssl
       - ./www:/var/www
@@ -27,6 +28,8 @@ services:
     restart: always
     environment:
       MARIADB_ROOT_PASSWORD: password
+    ports:
+      - "3306:3306"
     volumes:
       - "./data/mysql:/var/lib/mysql"
   php8.4:
