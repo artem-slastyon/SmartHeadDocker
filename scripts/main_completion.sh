@@ -1,14 +1,14 @@
-{{projectCommand}}_is_zsh() {
+smarthead_is_zsh() {
   [ -n "${ZSH_VERSION-}" ]
 }
 
-if {{projectCommand}}_is_zsh; then
+if smarthead_is_zsh; then
   setopt completealiases
 fi
 
-alias {{projectCommand}}='$HOME/workspace/{{projectCommand}}/scripts/main.sh'
+alias smarthead='$HOME/workspace/smarthead/scripts/main.sh'
 
-_{{projectCommand}}_generate_completion() {
+_smarthead_generate_completion() {
   declare current_word
   current_word="${COMP_WORDS[COMP_CWORD]}"
   # shellcheck disable=SC2207
@@ -16,7 +16,7 @@ _{{projectCommand}}_generate_completion() {
   return 0
 }
 
-_{{projectCommand}}_commands() {
+_smarthead_commands() {
   declare current_word
   declare command
 
@@ -31,31 +31,31 @@ _{{projectCommand}}_commands() {
   SERVICES='apache php8.4'
 
   if [ ${#COMP_WORDS[@]} == 2 ]; then
-    _{{projectCommand}}_generate_completion "${COMMANDS}"
+    _smarthead_generate_completion "${COMMANDS}"
   fi
 
   case "${#COMP_WORDS[@]}" in
-  2) _{{projectCommand}}_generate_completion "${COMMANDS}";;
+  2) _smarthead_generate_completion "${COMMANDS}";;
   3)
     command="${COMP_WORDS[COMP_CWORD - 1]}"
     if [ "$command" == "docker" ]; then
-      _{{projectCommand}}_generate_completion "${DOCKER_SUBCOMMANDS}"
+      _smarthead_generate_completion "${DOCKER_SUBCOMMANDS}"
     fi;;
   4)
     command="${COMP_WORDS[COMP_CWORD - 1]}"
     case "$command" in
-    "exec") _{{projectCommand}}_generate_completion "${SERVICES}";;
+    "exec") _smarthead_generate_completion "${SERVICES}";;
     esac
   esac
 }
 
-_{{projectCommand}}() {
+_smarthead() {
   declare previous_word
   previous_word="${COMP_WORDS[COMP_CWORD - 1]}"
 
   case "${previous_word}" in
   *)
-    _{{projectCommand}}_commands
+    _smarthead_commands
   ;;
   esac
 }
@@ -76,4 +76,4 @@ if [[ -n ${ZSH_VERSION-} ]]; then
   autoload -U +X bashcompinit && bashcompinit
 fi
 
-complete -o default -F _{{projectCommand}} {{projectCommand}}
+complete -o default -F _smarthead smarthead

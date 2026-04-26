@@ -2,9 +2,9 @@
 
 echo "Building frontend..."
 
-docker-compose -p {{projectCommand}} -f ~/workspace/{{projectCommand}}/docker-compose.yml run -u user php8.4 bash -c "$(cat << EOF
+docker-compose -p smarthead -f ~/workspace/smarthead/docker-compose.yml run -u user php8.4 bash -c "$(cat << EOF
 . ~/.nvm/nvm.sh &&
-cd /var/www/sample &&
+cd /var/www/site &&
 npm install
 npm run dev
 EOF

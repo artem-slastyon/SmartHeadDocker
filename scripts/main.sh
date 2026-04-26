@@ -2,9 +2,9 @@
 
 general_help() {
   help=$(cat << 'EOF'
-  {{projectName}}
+  SmartHead
 
-  Usage: {{projectCommand}} <command> [options]
+  Usage: smarthead <command> [options]
 
   \e[0;36mGeneral\e[0m commands:
   \e[1;32mdocker\e[0m - Docker commands
@@ -36,9 +36,9 @@ EOF
 
 docker_help() {
   help=$(cat << 'EOF'
-  {{projectName}} Docker Commands
+  SmartHead Docker Commands
 
-  Usage: {{projectCommand}} docker <command>
+  Usage: smarthead docker <command>
 
   Commands:
   \e[1;32mbuild\e[0m - Build docker containers

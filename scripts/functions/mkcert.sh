@@ -1,6 +1,6 @@
 #!/bin/bash
 
-CERTS_ROOT="$HOME/workspace/{{projectCommand}}/certs"
+CERTS_ROOT="$HOME/workspace/smarthead/certs"
 old_pwd=$(pwd)
 MKCERT_COMMAND=("$@")
 

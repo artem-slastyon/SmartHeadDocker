@@ -61,7 +61,7 @@ RUN . ~/.nvm/nvm.sh && \
 
 EXPOSE 9000/tcp
 
-WORKDIR /var/www/sample
+WORKDIR /var/www/site
 
 USER root
 
