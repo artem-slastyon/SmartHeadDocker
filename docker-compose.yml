@@ -28,6 +28,7 @@ services:
     restart: always
     environment:
       MARIADB_ROOT_PASSWORD: password
+      MARIADB_DATABASE: smarthead
     ports:
       - "3306:3306"
     volumes:
