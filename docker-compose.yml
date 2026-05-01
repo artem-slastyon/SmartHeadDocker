@@ -60,3 +60,14 @@ services:
       DB_DATABASE: smarthead
       DB_USERNAME: root
       DB_PASSWORD: password
+  swagger:
+    container_name: "smarthead-swagger"
+    restart: always
+    image: docker.swagger.io/swaggerapi/swagger-ui
+    ports:
+      - "8080:8080"
+    environment:
+      VALIDATOR_URL: "none"
+      SWAGGER_JSON: /openapi.yaml
+    volumes:
+      - "./www/site/openapi.yaml:/openapi.yaml"
