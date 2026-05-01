@@ -23,7 +23,11 @@ RUN mkdir -p /var/log/supervisor
 
 COPY config/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
-RUN LC_ALL=C.UTF-8 add-apt-repository -y ppa:ondrej/php
+RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 71DAEAAB4AD4CAB6 && \
+    echo "deb [arch=amd64] https://ondrej-ppa-php.program-language.mirror.naxonet.net/ubuntu/ jammy main" > /etc/apt/sources.list.d/naxonet-php.list && \
+    apt update
+
+#RUN LC_ALL=C.UTF-8 add-apt-repository -y ppa:ondrej/php
 
 RUN apt-get install -y php8.4-fpm \
     php8.4-zip \
