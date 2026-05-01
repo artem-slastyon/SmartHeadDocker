@@ -9,8 +9,15 @@ You use this you need:
 
 ### Preparing to work
 
-Open terminal in this directory and run command below to start env setup:
+First, clone this repository to directory ~/workspace/smarthead
+
 ```bash
+git clone https://github.com/artem-slastyon/SmartHeadDocker.git ~/workspace/smarthead
+```
+
+Then enter new directory and run setup script:
+```bash
+cd ~/workspace/smarthead
 ./scripts/main.sh setup
 ```
 Then restart shell
