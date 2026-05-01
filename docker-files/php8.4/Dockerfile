@@ -30,10 +30,12 @@ RUN apt-get install -y php8.4-fpm \
     php8.4-mbstring \
     php8.4-curl \
     php8.4-xml \
-    php8.4-mysql
+    php8.4-mysql \
+    php8.4-xdebug
 
 COPY config/fpm.conf /etc/php/8.4/fpm/php-fpm.conf
 COPY config/fpm-pool.conf /etc/php/8.4/fpm/pool.d/www.conf
+COPY config/xdebug.ini /etc/php/8.4/fpm/conf.d/20-xdebug.ini
 
 RUN mkdir -p /run/php
 

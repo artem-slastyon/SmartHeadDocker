@@ -40,6 +40,8 @@ services:
     volumes:
       - "./logs/supervisor/:/var/log/supervisor/:delegated"
       - "./www:/var/www"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     develop:
       watch:
         - action: rebuild
