@@ -20,7 +20,7 @@ general_help() {
   \e[1;32mcomposer\e[0m - Execute composer command
 
   \e[0;36mGit\e[0m commands:
-  \e[1;32mclone\e[0m - Clone repositories that not exists
+  \e[1;32mclone\e[0m - Clone repositories that not cloned yet
   \e[1;32mgit\e[0m - Run git command for each repository
 
 
