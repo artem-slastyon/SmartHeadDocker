@@ -22,7 +22,7 @@ MAIN_SCRIPT_PATH="$( dirname -- "$FUNCTIONS_PATH";)/main.sh"
 $MAIN_SCRIPT_PATH clone
 $MAIN_SCRIPT_PATH mkcert smarthead.tenorium.local
 $MAIN_SCRIPT_PATH up
-$MAIN_SCRIPT_PATH docker exec php8.4 -c "cp .env.docker .env"
+cp ~/workspace/smarthead/www/site/.env.docker ~/workspace/smarthead/www/site/.env
 $MAIN_SCRIPT_PATH composer install -o --no-interaction
 $MAIN_SCRIPT_PATH artisan migrate --seed --no-interaction
 $MAIN_SCRIPT_PATH build
